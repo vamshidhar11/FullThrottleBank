@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   typography: {
     fontFamily: 'Montserrat',
+    fontSize: '1.6rem',
     marginBottom: 20
   }
 }));
@@ -31,35 +32,39 @@ const marks = [
 ];
 
 const marks2 = [{ value: 13 }];
-export default function EnterDetails() {
+export default function EnterDetails(props) {
   const classes = useStyles();
   const [principal, setPrincipal] = React.useState(0);
   const [tenure, setTenure] = React.useState(0);
   const [interestRate, setInterest] = React.useState(0);
   const [monthlyPayment, setMonthlyPayment] = React.useState({ amount: 0 });
+  const [data, setData] = React.useState();
   React.useEffect(() => {
     if (principal !== 0 && tenure !== 0) {
-      console.log(`Hit API =>  ${principal} ${tenure}`);
       fetch(
         `https://ftl-frontend-test.herokuapp.com/interest?amount=${principal}&numMonths=${tenure}`
       )
         .then(response => response.json())
-        .then(data => {
-          setInterest(data.interestRate);
-          setMonthlyPayment(data.monthlyPayment);
-          console.log(data);
+        .then(d => {
+          setInterest(d.interestRate);
+          setMonthlyPayment(d.monthlyPayment);
+          setData(d);
         });
     }
   }, [principal, tenure]);
+  React.useEffect(() => {
+    const { getHistory } = props;
+    getHistory(data);
+  }, [interestRate, monthlyPayment, props, data]);
 
   function capturePrincipal(principal) {
-    console.log('Principal => ' + principal);
     setPrincipal(principal);
   }
+
   function captureLoanTenure(tenure) {
-    console.log('Tenure => ' + tenure);
     setTenure(tenure);
   }
+
   return (
     <div className="container">
       <div className="input">
@@ -68,9 +73,9 @@ export default function EnterDetails() {
             Principal <span>$ {principal}</span>
           </Typography>
           <CustomizedSlider
-            defaultValue={500}
+            defaultValue={2000}
             marks={marks}
-            step={50}
+            step={100}
             min={500}
             max={5000}
             onInputChange={capturePrincipal}
@@ -79,7 +84,7 @@ export default function EnterDetails() {
             Loan Tenure (in months) <span>{tenure} months</span>
           </Typography>
           <CustomizedSlider
-            defaultValue={20}
+            defaultValue={12}
             marks={marks2}
             min={6}
             max={20}
@@ -88,6 +93,7 @@ export default function EnterDetails() {
           {/* <div className={classes.margin} /> */}
         </Paper>
       </div>
+
       <Output
         title="interest rate"
         className="interest"
