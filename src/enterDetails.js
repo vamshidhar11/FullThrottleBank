@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
   },
   typography: {
     fontFamily: 'Montserrat',
-    marginBottom: 20
+    marginBottom: 20,
+    fontSize: '2rem'
   }
 }));
 const marks = [

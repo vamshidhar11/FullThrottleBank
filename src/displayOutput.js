@@ -6,7 +6,7 @@ export default function Output(props) {
     <div className={className}>
       <h3>{title}</h3>
       <div className="display-result">
-        <span className="numeric"> {numericOutput}</span>{' '}
+        <span className="numeric"> {numericOutput}</span>
         <span className="currency">{currency}</span>
       </div>
     </div>

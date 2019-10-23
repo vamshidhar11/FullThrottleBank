@@ -5,12 +5,15 @@
   padding: 0;
   box-sizing: inherit;
 }
+html {
+  font-size: 62.5%;
+}
 .app-header {
   font-family: 'Montserrat', sans-serif;
   background-color: #d10000;
   color: white;
   text-transform: uppercase;
-  padding: 1% 0 1.5% 15%;
+  padding: 1% 0 1% 15%;
 }
 
 .header {
@@ -24,17 +27,19 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #090909;
+  max-width: 100%;
+  height: auto;
   background-attachment: fixed;
   color: #fff;
-  min-height: 700px;
+  min-height: 70rem;
 }
 
 .container {
   background-color: rgba(209, 0, 0, 0.8);
   border-radius: 1rem;
-  margin: 30px auto;
-  height: 500px;
-  width: 600px;
+  margin: 3rem auto;
+  height: auto;
+  width: 60rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
@@ -54,33 +59,65 @@
 .interest {
   grid-area: interest;
   text-align: center;
-  padding: 20px 0;
+  padding: 2rem 0;
 }
 .installment {
   grid-area: installment;
   text-align: center;
-  padding: 20px 0;
+  padding: 2rem 0;
 }
 .display-result {
-  height: 80px;
+  height: 8rem;
   color: #d10000;
-  width: 200px;
+  width: 20rem;
   align-content: center;
-  font-size: 3rem;
-  font-weight: 900;
-  margin: 40px auto;
-  padding-top: 20px;
-  border-radius: 15px;
+  margin: 4rem auto;
+  padding-top: 2rem;
+  border-radius: 1.5rem;
   background-color: #fff;
 }
 
 span.currency {
-  font-size: 1rem;
+  font-size: 1.4rem;
+}
+
+span.numeric {
+  font-size: 4rem;
+  font-weight: 900;
 }
 h3 {
   font-weight: 500;
+  font-size: 2rem;
 }
 h1 {
   font-weight: 500;
-  font-size: 2.2rem;
+  font-size: 3.2rem;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 930px) {
+  html {
+    font-size: 45%;
+  }
+  .container {
+    width: 60rem;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-columns: 0.4fr 0.4fr;
+    grid-template-areas:
+      'input input'
+      'interest installment';
+  }
+
+  .display-result {
+    height: 6rem;
+    color: #d10000;
+    width: 15rem;
+    align-content: center;
+    margin: 2rem auto;
+    padding-top: 1rem;
+    border-radius: 1.5rem;
+    background-color: #fff;
+  }
+  .app-header {
+    padding: 5% 5%;
+  }
 }
