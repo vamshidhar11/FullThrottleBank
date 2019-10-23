@@ -38,7 +38,7 @@ export default function EnterDetails(props) {
   const [tenure, setTenure] = React.useState(0);
   const [interestRate, setInterest] = React.useState(0);
   const [monthlyPayment, setMonthlyPayment] = React.useState({ amount: 0 });
-  const [data, setData] = React.useState();
+
   React.useEffect(() => {
     if (principal !== 0 && tenure !== 0) {
       fetch(
@@ -48,14 +48,9 @@ export default function EnterDetails(props) {
         .then(d => {
           setInterest(d.interestRate);
           setMonthlyPayment(d.monthlyPayment);
-          setData(d);
         });
     }
   }, [principal, tenure]);
-  React.useEffect(() => {
-    const { getHistory } = props;
-    getHistory(data);
-  }, [interestRate, monthlyPayment, props, data]);
 
   function capturePrincipal(principal) {
     setPrincipal(principal);

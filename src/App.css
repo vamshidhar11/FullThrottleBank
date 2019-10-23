@@ -5,8 +5,10 @@
   padding: 0;
   box-sizing: inherit;
 }
-html {
+html,
+body {
   font-size: 62.5%;
+  background-color: #d10000;
 }
 .app-header {
   font-family: 'Montserrat', sans-serif;
@@ -26,29 +28,25 @@ html {
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #090909;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   background-attachment: fixed;
   color: #fff;
-  min-height: 70rem;
 }
 
 .container {
   background-color: rgba(209, 0, 0, 0.8);
   border-radius: 1rem;
   margin: 3rem auto;
-  height: auto;
+
   width: 60rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
 
-  grid-area: container;
-
   display: grid;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 
   grid-template-areas:
     'input input'
@@ -98,7 +96,7 @@ h1 {
 
 @media only screen and (min-width: 100px) and (max-width: 930px) {
   html {
-    font-size: 42%;
+    font-size: 45%;
   }
   .container {
     width: auto;
@@ -123,6 +121,6 @@ h1 {
     padding: 5% 5%;
   }
   span.MuiSlider-root {
-    width: 50%;
+    width: 60%;
   }
 }
