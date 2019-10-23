@@ -19,7 +19,7 @@ function ValueLabelComponent(props) {
         popperRef
       }}
       open={open}
-      enterTouchDelay={1}
+      enterTouchDelay={0}
       placement="top"
       title={value}
     >
@@ -90,8 +90,8 @@ const IOSSlider = withStyles({
 })(Slider);
 
 export default function CustomizedSlider(props) {
+  console.log(props.updatedValue);
   const { marks, min, max, step, defaultValue } = props;
-  console.log(marks);
   const handleChange = (event, newValue) => {
     props.onInputChange(newValue);
   };
